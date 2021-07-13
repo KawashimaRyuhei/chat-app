@@ -1,6 +1,6 @@
 <div class="top_box">
   <div class="name_box">
-    <a href="#">Tom</a>
+     <%= link_to current_user.name, edit_user_path(current_user) %>
   </div>
   <div class="chat_make">
     <a href="#">チャットを作成する</a>
