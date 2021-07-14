@@ -1,14 +1,16 @@
 <div class="main_top">
   <div class="chatname_top">
-    hogefuga
+    <%= @room.name %>
   </div>
   <div class="chat_finish">
-    <a href="#">チャットを終了する</a>
+    <%= link_to 'チャットを終了する', room_path(@room) ,method: :delete %>
   </div>  
 </div>
 
 <div class="main_middle">
-  <div class="main_middle_contents">
+  <%= render partial: 'message', collection: @messages %>
+
+  <%# <div class="main_middle_contents">
     <div class="content_name">
     TOM
     </div>
@@ -29,10 +31,22 @@
   </div>
   <div class="content_comment">
   さよなら
-  </div>
+  </div> %>
 </div>
 
-<div class="main_bottom">
+<%= form_with model: [@room,@message], class: 'main_bottom', local: true do |f| %>
+  <div class=messages>
+    <%= f.text_field :content, class: 'message', placeholder: 'type a message' %>
+    <label class="form-image">
+      <span class="image-file">画像</span>
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div>
+  <%= f.submit '送信', class: 'send' %>
+<% end %>
+
+
+<%# <div class="main_bottom">
   <div class="messages">
     <input type="text" placeholder="type a message" class="message">
     <label class="form-image">
@@ -41,4 +55,4 @@
     </label>
   </div>
   <input type="submit" value="送信" class="send">
-</div>
+</div> %>
