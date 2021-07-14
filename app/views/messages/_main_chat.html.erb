@@ -8,7 +8,9 @@
 </div>
 
 <div class="main_middle">
-  <div class="main_middle_contents">
+  <%= render partial: 'message', collection: @messages %>
+
+  <%# <div class="main_middle_contents">
     <div class="content_name">
     TOM
     </div>
@@ -29,7 +31,7 @@
   </div>
   <div class="content_comment">
   さよなら
-  </div>
+  </div> %>
 </div>
 
 <%= form_with model: [@room,@message], class: 'main_bottom', local: true do |f| %>
